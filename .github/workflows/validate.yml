@@ -1,0 +1,65 @@
+name: Validate changes
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+    workflow_dispatch: {}
+
+jobs:
+    validate:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Validate manifests are well-formed YAML
+              run: |
+                  pip install pyyaml
+                  for manifest in changes/*/manifest.yaml; do
+                      if [ ! -f "$manifest" ]; then continue; fi
+                      echo "Validating $manifest..."
+                      python -c "import yaml, sys; yaml.safe_load(open(sys.argv[1]))" "$manifest"
+                  done
+
+            - name: Verify SHA-256 hashes match generated XML
+              run: |
+                  for hashfile in changes/*/built/update-set.sha256; do
+                      if [ ! -f "$hashfile" ]; then continue; fi
+                      dir=$(dirname "$hashfile")
+                      xml="$dir/update-set.xml"
+                      if [ ! -f "$xml" ]; then
+                          echo "::error::Hash file exists but $xml does not"
+                          exit 1
+                      fi
+                      expected=$(awk '{print $1}' "$hashfile")
+                      actual=$(sha256sum "$xml" | awk '{print $1}')
+                      if [ "$expected" != "$actual" ]; then
+                          echo "::error::Hash mismatch for $xml"
+                          echo "  expected: $expected"
+                          echo "  actual:   $actual"
+                          echo "  Regenerate with build-update-set.js and commit the result."
+                          exit 1
+                      fi
+                      echo "OK: $xml hash matches"
+                  done
+
+            - name: Verify update-set.xml files are well-formed XML
+              run: |
+                  pip install lxml
+                  for xml in changes/*/built/update-set.xml; do
+                      if [ ! -f "$xml" ]; then continue; fi
+                      python -c "from lxml import etree; etree.parse('$xml')" || {
+                          echo "::error::$xml is not well-formed XML"
+                          exit 1
+                      }
+                      echo "OK: $xml parses"
+                  done
+
+            - name: Summarize
+              run: |
+                  count=$(find changes -mindepth 1 -maxdepth 1 -type d 2>/dev/null | wc -l)
+                  applied=$(find changes -name '.applied' 2>/dev/null | wc -l)
+                  echo "Changes total:   $count"
+                  echo "Changes applied: $applied"
+                  echo "Changes pending: $((count - applied))"

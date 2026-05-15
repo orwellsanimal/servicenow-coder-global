@@ -1,0 +1,21 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Don't commit local secrets if anyone drops them here
+.env
+.env.*
+!.env.example
+
+# Don't commit node_modules if anyone adds Node deps later
+node_modules/
+
+# Python bytecode (in case anyone runs validation locally)
+__pycache__/
+*.pyc
+.venv/
