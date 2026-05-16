@@ -38,6 +38,75 @@ Adds a custom field to an existing table via `sys_dictionary`.
 | `active` | bool | no | Default `true` |
 | `description` | string | no | Field comments / help text |
 
+### `catalog_item`
+
+Creates an `sc_cat_item` plus nested `item_option_new` variables, their
+`question_choice` values, and any additional `sc_cat_item_category` mappings.
+A single manifest entry emits multiple `sys_update_xml` records under the
+same parent update set.
+
+**Top-level fields**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `type` | string | yes | Always `catalog_item` |
+| `name` | string | yes | Item name (used as `sys_name` + display). Seeds the deterministic sys_id — don't change after applying. |
+| `short_description` | string | no | One-line description |
+| `description` | string | no | HTML description body (wrapped in CDATA) |
+| `price` | number | no | Default `0` |
+| `cost` | number | no | Default `0` |
+| `recurring_price` | number | no | Default `0` |
+| `list_price` | number | no | Default `0` |
+| `active` | bool | no | Default `true` |
+| `billable` | bool | no | Default `false` |
+| `availability` | string | no | `on_desktop` (default), `mobile`, `both` |
+| `access_type` | string | no | `restricted` (default) or `public` |
+| `roles` | string | no | Comma-separated role names |
+| `catalogs` | string | no | `sc_catalogs` sys_id (e.g. Service Catalog) |
+| `category` | string | no | Primary category sys_id (lives on `sc_cat_item.category`) |
+| `delivery_time` | string | no | Duration as epoch-offset datetime (`"1970-01-03 00:00:00"` = 2 days) |
+| `owner` | string | no | `sys_user` sys_id |
+| `flow_designer_flow` | string | no | Flow sys_id for fulfillment |
+| `fulfillment_automation_level` | string | no | Default `semi_automated` |
+| `variables` | list | no | Nested variables (see below) |
+| `additional_categories` | list[string] | no | Extra category sys_ids — creates `sc_cat_item_category` rows |
+
+**`variables[]` entries (each becomes an `item_option_new` record)**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | yes | Internal field name. Seeds the sys_id. |
+| `question_text` | string | no | Display label |
+| `type` | int | no | `3`=Multiple Choice (default), `5`=Select Box, `6`=Single Line Text, etc. |
+| `order` | int | no | Default `100` |
+| `mandatory` | bool | no | Default `false` |
+| `active` | bool | no | Default `true` |
+| `default_value` | string | no | Should match one of `choices.value` for choice variables |
+| `do_not_select_first` | bool | no | Default `false` |
+| `include_none` | bool | no | Default `false` |
+| `layout` | string | no | Default `normal` |
+| `choices` | list | no | Nested choices (only for choice-type variables) |
+
+**`choices[]` entries (each becomes a `question_choice` record)**
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `value` | string/number | yes | Internal value. Seeds the sys_id. |
+| `text` | string | no | Display label. Defaults to `value`. |
+| `order` | int | no | Default `100` |
+| `misc` | number | no | Price adjustment for this choice. Default `0`. |
+| `inactive` | bool | no | Default `false` |
+
+**Determinism for catalog items**
+
+- Item sys_id: `(manifest.name, "sc_cat_item", item.name)`
+- Variable sys_id: `(manifest.name, "item_option_new", item.name, variable.name)`
+- Choice sys_id: `(manifest.name, "question_choice", item.name, variable.name, choice.value)`
+- Category map sys_id: `(manifest.name, "sc_cat_item_category", item.name, category_sys_id)`
+
+Renaming a variable or changing a choice `value` after applying mints new
+sys_ids and orphans the old records. Re-name = re-create.
+
 ### `business_rule`
 
 Adds a Business Rule via `sys_script`.
@@ -119,6 +188,8 @@ Sys_ids are derived deterministically from:
 - The artifact type
 - For `sys_dictionary`: `(table, element)`
 - For `sys_script`: `(table, rule name)`
+- For `sc_cat_item` (and its nested variables / choices / category maps): see
+  the per-record seeds documented under [`catalog_item`](#catalog_item)
 
 This means **re-running the generator produces the same sys_ids**, so the
 generated update set is recognized as an update on re-import rather than

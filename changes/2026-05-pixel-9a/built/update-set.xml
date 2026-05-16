@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2026-05-16 17:09:20">
+  <sys_remote_update_set action="INSERT_OR_UPDATE">
+    <sys_id>bbac675e670fa248a59c3f654bbeac19</sys_id>
+    <name>Catalog — Pixel 9a (clone of Pixel 4a)</name>
+    <description>Adds a new &quot;Pixel 9a&quot; catalog item to the Service Catalog under the
+Mobiles category, with colour + storage variables. Modeled on the
+existing Pixel 4a item (sys_id 07d8173e9756cd1021983d1e6253af1d).
+First exercise of the catalog_item artifact type in the update set
+generator.
+</description>
+    <state>loaded</state>
+    <application>global</application>
+    <release_date>2026-05-16 17:09:20</release_date>
+    <inserted>2026-05-16 17:09:20</inserted>
+  </sys_remote_update_set>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>sc_cat_item_c0c866458f59d1b716e16bd43fc466d4</name>
+    <target_name>Pixel 9a</target_name>
+    <type>Catalog Item</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>bc5b8c68871dddea82f9928cb0d7ea7fa1f8241ad27e8cb1ec8a90e10305299b</payload_hash>
+    <remote_update_set>bbac675e670fa248a59c3f654bbeac19</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;sc_cat_item&quot;&gt;
+  &lt;sc_cat_item action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;c0c866458f59d1b716e16bd43fc466d4&lt;/sys_id&gt;
+    &lt;name&gt;Pixel 9a&lt;/name&gt;
+    &lt;sys_name&gt;Pixel 9a&lt;/sys_name&gt;
+    &lt;short_description&gt;Request for Pixel 9a&lt;/short_description&gt;
+    &lt;description&gt;&lt;![CDATA[&lt;p&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Display: 6.3&quot; OLED, 120Hz&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Camera: 48MP + 13MP ultrawide rear, 13MP front&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Battery: 5100 mAh&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;RAM: 8GB&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Processor: Google Tensor G4&lt;/span&gt;&lt;/p&gt;
+]]&gt;&lt;/description&gt;
+    &lt;price&gt;499&lt;/price&gt;
+    &lt;cost&gt;0&lt;/cost&gt;
+    &lt;recurring_price&gt;0&lt;/recurring_price&gt;
+    &lt;list_price&gt;0&lt;/list_price&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;billable&gt;false&lt;/billable&gt;
+    &lt;availability&gt;on_desktop&lt;/availability&gt;
+    &lt;access_type&gt;restricted&lt;/access_type&gt;
+    &lt;roles&gt;snc_internal&lt;/roles&gt;
+    &lt;sc_catalogs&gt;e0d08b13c3330100c8b837659bba8fb4&lt;/sc_catalogs&gt;
+    &lt;category&gt;d68eb4d637b1300054b6a3549dbe5db2&lt;/category&gt;
+    &lt;delivery_time&gt;1970-01-03 00:00:00&lt;/delivery_time&gt;
+    &lt;type&gt;item&lt;/type&gt;
+    &lt;use_sc_layout&gt;true&lt;/use_sc_layout&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;mobile_picture_type&gt;use_desktop_picture&lt;/mobile_picture_type&gt;
+    &lt;display_price_property&gt;non_zero&lt;/display_price_property&gt;
+    &lt;fulfillment_automation_level&gt;semi_automated&lt;/fulfillment_automation_level&gt;
+    &lt;owner&gt;&lt;/owner&gt;
+    &lt;flow_designer_flow&gt;&lt;/flow_designer_flow&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;sc_cat_item&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;sc_cat_item_c0c866458f59d1b716e16bd43fc466d4&lt;/sys_update_name&gt;
+  &lt;/sc_cat_item&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>item_option_new_3fe41d69326ee4727a265c704e039f29</name>
+    <target_name>Pixel 9a :: colour</target_name>
+    <type>Variable</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>25ba330121e7de8b995b83788d24be11ea24d880094a1404ecaf953bacdaf2ad</payload_hash>
+    <remote_update_set>bbac675e670fa248a59c3f654bbeac19</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;item_option_new&quot;&gt;
+  &lt;item_option_new action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;3fe41d69326ee4727a265c704e039f29&lt;/sys_id&gt;
+    &lt;cat_item&gt;c0c866458f59d1b716e16bd43fc466d4&lt;/cat_item&gt;
+    &lt;name&gt;colour&lt;/name&gt;
+    &lt;sys_name&gt;Choose the colour&lt;/sys_name&gt;
+    &lt;question_text&gt;Choose the colour&lt;/question_text&gt;
+    &lt;type&gt;3&lt;/type&gt;
+    &lt;order&gt;10&lt;/order&gt;
+    &lt;mandatory&gt;true&lt;/mandatory&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;default_value&gt;obsidian&lt;/default_value&gt;
+    &lt;layout&gt;normal&lt;/layout&gt;
+    &lt;visibility&gt;1&lt;/visibility&gt;
+    &lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;
+    &lt;include_none&gt;false&lt;/include_none&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;item_option_new_3fe41d69326ee4727a265c704e039f29&lt;/sys_update_name&gt;
+  &lt;/item_option_new&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_72e6a7578ae2ed905ad0b38fd7d6c2b7</name>
+    <target_name>Pixel 9a :: colour = obsidian</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>6e53916e0c196fb9e853e808748b194204b57545c706e2c0703c6d768a18e54c</payload_hash>
+    <remote_update_set>bbac675e670fa248a59c3f654bbeac19</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;72e6a7578ae2ed905ad0b38fd7d6c2b7&lt;/sys_id&gt;
+    &lt;question&gt;3fe41d69326ee4727a265c704e039f29&lt;/question&gt;
+    &lt;text&gt;Obsidian&lt;/text&gt;
+    &lt;value&gt;obsidian&lt;/value&gt;
+    &lt;order&gt;100&lt;/order&gt;
+    &lt;misc&gt;0&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;Obsidian&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_72e6a7578ae2ed905ad0b38fd7d6c2b7&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_822f2ce8d7aad3caac26985427ba880d</name>
+    <target_name>Pixel 9a :: colour = iris</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>60a6e04413edd1a0ed6cab2c37730609bbb71f3d644622f8d4e78cbd69507f50</payload_hash>
+    <remote_update_set>bbac675e670fa248a59c3f654bbeac19</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;822f2ce8d7aad3caac26985427ba880d&lt;/sys_id&gt;
+    &lt;question&gt;3fe41d69326ee4727a265c704e039f29&lt;/question&gt;
+    &lt;text&gt;Iris&lt;/text&gt;
+    &lt;value&gt;iris&lt;/value&gt;
+    &lt;order&gt;200&lt;/order&gt;
+    &lt;misc&gt;0&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;Iris&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_822f2ce8d7aad3caac26985427ba880d&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_7b1a7a96423e8c84da988c0b8b9c654b</name>
+    <target_name>Pixel 9a :: colour = peony</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>1e41f58a5c7e27c1eed666998ee5bc4a3a9febb034ad6c0c245831bea9b92755</payload_hash>
+    <remote_update_set>bbac675e670fa248a59c3f654bbeac19</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;7b1a7a96423e8c84da988c0b8b9c654b&lt;/sys_id&gt;
+    &lt;question&gt;3fe41d69326ee4727a265c704e039f29&lt;/question&gt;
+    &lt;text&gt;Peony&lt;/text&gt;
+    &lt;value&gt;peony&lt;/value&gt;
+    &lt;order&gt;300&lt;/order&gt;
+    &lt;misc&gt;0&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;Peony&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_7b1a7a96423e8c84da988c0b8b9c654b&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_e298142403aecc8375cc51d07f918deb</name>
+    <target_name>Pixel 9a :: colour = porcelain</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>f0aeaa391fa6a168e5dfb372a5e7871bbc3c4350b916158c21d7eb72714e6207</payload_hash>
+    <remote_update_set>bbac675e670fa248a59c3f654bbeac19</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;e298142403aecc8375cc51d07f918deb&lt;/sys_id&gt;
+    &lt;question&gt;3fe41d69326ee4727a265c704e039f29&lt;/question&gt;
+    &lt;text&gt;Porcelain&lt;/text&gt;
+    &lt;value&gt;porcelain&lt;/value&gt;
+    &lt;order&gt;400&lt;/order&gt;
+    &lt;misc&gt;0&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;Porcelain&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_e298142403aecc8375cc51d07f918deb&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>item_option_new_79541815724a75e0f06722f0cbc45331</name>
+    <target_name>Pixel 9a :: storage</target_name>
+    <type>Variable</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>6ceed914355dab15dd7cf849dc11a18528f71781ce13a88340d666535e8ae23d</payload_hash>
+    <remote_update_set>bbac675e670fa248a59c3f654bbeac19</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;item_option_new&quot;&gt;
+  &lt;item_option_new action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;79541815724a75e0f06722f0cbc45331&lt;/sys_id&gt;
+    &lt;cat_item&gt;c0c866458f59d1b716e16bd43fc466d4&lt;/cat_item&gt;
+    &lt;name&gt;storage&lt;/name&gt;
+    &lt;sys_name&gt;Choose the storage&lt;/sys_name&gt;
+    &lt;question_text&gt;Choose the storage&lt;/question_text&gt;
+    &lt;type&gt;3&lt;/type&gt;
+    &lt;order&gt;20&lt;/order&gt;
+    &lt;mandatory&gt;true&lt;/mandatory&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;default_value&gt;&lt;/default_value&gt;
+    &lt;layout&gt;normal&lt;/layout&gt;
+    &lt;visibility&gt;1&lt;/visibility&gt;
+    &lt;do_not_select_first&gt;true&lt;/do_not_select_first&gt;
+    &lt;include_none&gt;false&lt;/include_none&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;item_option_new_79541815724a75e0f06722f0cbc45331&lt;/sys_update_name&gt;
+  &lt;/item_option_new&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_b04488295e07cb45aae90c168bf99f1a</name>
+    <target_name>Pixel 9a :: storage = 128</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>4604a252433111827533e6eaefd680f5a8b4c528ddf9731d1be9ad352693a0d0</payload_hash>
+    <remote_update_set>bbac675e670fa248a59c3f654bbeac19</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;b04488295e07cb45aae90c168bf99f1a&lt;/sys_id&gt;
+    &lt;question&gt;79541815724a75e0f06722f0cbc45331&lt;/question&gt;
+    &lt;text&gt;128 GB&lt;/text&gt;
+    &lt;value&gt;128&lt;/value&gt;
+    &lt;order&gt;100&lt;/order&gt;
+    &lt;misc&gt;0&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;128 GB&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_b04488295e07cb45aae90c168bf99f1a&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_19d0355a794bc7c163670d25c9522036</name>
+    <target_name>Pixel 9a :: storage = 256</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>2280a7303d24663abbad0353da9b7458a658da78be997362fa4e871eb15ab7b1</payload_hash>
+    <remote_update_set>bbac675e670fa248a59c3f654bbeac19</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;19d0355a794bc7c163670d25c9522036&lt;/sys_id&gt;
+    &lt;question&gt;79541815724a75e0f06722f0cbc45331&lt;/question&gt;
+    &lt;text&gt;256 GB&lt;/text&gt;
+    &lt;value&gt;256&lt;/value&gt;
+    &lt;order&gt;200&lt;/order&gt;
+    &lt;misc&gt;100&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;256 GB&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_19d0355a794bc7c163670d25c9522036&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+</unload>
