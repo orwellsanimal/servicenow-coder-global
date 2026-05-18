@@ -1,0 +1,109 @@
+# Catalog item clone — Pixel 4a -> Pixel 9a
+#
+# First exercise of the catalog_item artifact type in the update set generator.
+# Source item on dev392282: sc_cat_item 07d8173e9756cd1021983d1e6253af1d
+#
+# Generate:
+#   node scripts/build-update-set.js \
+#     /c/servicenow-coder-global/changes/2026-05-pixel-9a/
+#
+# Preview against live instance:
+#   .venv/Scripts/python scripts/python/preview-update-set.py \
+#     /c/servicenow-coder-global/changes/2026-05-pixel-9a/built/update-set.xml
+
+name: Catalog — Pixel 9a (clone of Pixel 4a)
+description: |
+    Adds a new "Pixel 9a" catalog item to the Service Catalog under the
+    Mobiles category, with colour + storage variables. Modeled on the
+    existing Pixel 4a item (sys_id 07d8173e9756cd1021983d1e6253af1d).
+    First exercise of the catalog_item artifact type in the update set
+    generator.
+
+application: global
+target_release: 2026-Q2
+
+intent: |
+    Validate the catalog_item builder against a known-good source item.
+    Pixel 9a is a low-risk addition — net-new sc_cat_item, no field
+    additions to OOTB tables, no overrides of existing data. Workflow
+    is the deliverable; the specific specs are easy to re-tune later.
+
+artifacts:
+    - type: catalog_item
+      name: Pixel 9a
+      short_description: Request for Pixel 9a
+      description: |
+          <p><span style="font-size: 10pt;"><strong>Key features:</strong></span></p>
+          <p><span style="font-size: 10pt;">Display: 6.3" OLED, 120Hz</span></p>
+          <p><span style="font-size: 10pt;">Camera: 48MP + 13MP ultrawide rear, 13MP front</span></p>
+          <p><span style="font-size: 10pt;">Battery: 5100 mAh</span></p>
+          <p><span style="font-size: 10pt;">RAM: 8GB</span></p>
+          <p><span style="font-size: 10pt;">Processor: Google Tensor G4</span></p>
+      price: 499
+      cost: 0
+      active: true
+      availability: on_desktop
+      access_type: restricted
+      roles: snc_internal
+      # Service Catalog (sc_catalogs) — matches Pixel 4a parent catalog
+      catalogs: e0d08b13c3330100c8b837659bba8fb4
+      # Mobiles category — matches Pixel 4a primary category
+      category: d68eb4d637b1300054b6a3549dbe5db2
+      # 2 days, encoded as epoch-offset datetime (ServiceNow Duration convention)
+      delivery_time: "1970-01-03 00:00:00"
+      fulfillment_automation_level: semi_automated
+      variables:
+          - name: colour
+            question_text: Choose the colour
+            type: 3
+            order: 10
+            mandatory: true
+            default_value: obsidian
+            choices:
+                - value: obsidian
+                  text: Obsidian
+                  order: 100
+                - value: iris
+                  text: Iris
+                  order: 200
+                - value: peony
+                  text: Peony
+                  order: 300
+                - value: porcelain
+                  text: Porcelain
+                  order: 400
+
+          - name: storage
+            question_text: Choose the storage
+            type: 3
+            order: 20
+            mandatory: true
+            do_not_select_first: true
+            choices:
+                - value: "128"
+                  text: 128 GB
+                  order: 100
+                  misc: 0
+                - value: "256"
+                  text: 256 GB
+                  order: 200
+                  misc: 100
+
+estimated_impact:
+    tables_modified:
+        - sc_cat_item
+        - item_option_new
+        - question_choice
+    bulk_data_changes: false
+    rollback_complexity: low
+    notes: |
+        - Net-new sc_cat_item record — no risk to existing Pixel 4a or any
+          other catalog item.
+        - 2 variables + 6 question_choice records all anchored to the new
+          item by deterministic sys_id; no orphan risk on re-import.
+        - Rollback: deactivate the sc_cat_item (active=false) and the
+          deterministic sys_ids stay stable for a future re-activation.
+          Hard delete via UI if a true rollback is needed.
+        - This is also the test case for the catalog_item artifact type
+          itself. If anything is wrong with the generator, it will surface
+          at Preview Update Set time on the instance.
