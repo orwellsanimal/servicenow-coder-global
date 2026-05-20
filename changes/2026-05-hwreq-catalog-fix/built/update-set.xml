@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2026-05-20 09:31:31">
+  <sys_remote_update_set action="INSERT_OR_UPDATE">
+    <sys_id>e1f1333d8af1b34b4b2222153eaa3c75</sys_id>
+    <name>Catalog — Hardware Request fulfillment flow fix</name>
+    <description>Adds `flow_designer_flow` (OOTB &quot;Service Catalog item request&quot; flow,
+sys_id 30f3d26187e92300e0ef0cf888cb0b91) to two OOTB catalog items that
+ship without one, and activates &quot;Office Desktop&quot; which ships inactive.
+Without these patches, hw-request submissions for Windows or Desktop
+devices get stuck in &quot;Request Approval&quot; with no approvals generated
+(see CLAUDE.md catalog item fulfillment-flow note).
+</description>
+    <state>loaded</state>
+    <application>global</application>
+    <release_date>2026-05-20 09:31:31</release_date>
+    <inserted>2026-05-20 09:31:31</inserted>
+  </sys_remote_update_set>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>sc_cat_item_3cecd2350a0a0a6a013a3a35a5e41c07_patch_cbe9413a</name>
+    <target_name>Development Laptop (PC)</target_name>
+    <type>Catalog Item Patch</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>10e4a02c3ae4314b660849c82891fcda9f72feb5a419f03209d84349278b5f27</payload_hash>
+    <remote_update_set>e1f1333d8af1b34b4b2222153eaa3c75</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;sc_cat_item&quot;&gt;
+  &lt;sc_cat_item action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;3cecd2350a0a0a6a013a3a35a5e41c07&lt;/sys_id&gt;
+    &lt;flow_designer_flow&gt;30f3d26187e92300e0ef0cf888cb0b91&lt;/flow_designer_flow&gt;
+    &lt;sys_update_name&gt;sc_cat_item_3cecd2350a0a0a6a013a3a35a5e41c07_patch_cbe9413a&lt;/sys_update_name&gt;
+  &lt;/sc_cat_item&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>sc_cat_item_10ec16b3c61122760021a44ec7746bb3_patch_432b89cc</name>
+    <target_name>Office Desktop</target_name>
+    <type>Catalog Item Patch</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>e604fa643749319fa8ae36ad57d04fef352eb72a2817f93a45421c1704ab369c</payload_hash>
+    <remote_update_set>e1f1333d8af1b34b4b2222153eaa3c75</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;sc_cat_item&quot;&gt;
+  &lt;sc_cat_item action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;10ec16b3c61122760021a44ec7746bb3&lt;/sys_id&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;flow_designer_flow&gt;30f3d26187e92300e0ef0cf888cb0b91&lt;/flow_designer_flow&gt;
+    &lt;sys_update_name&gt;sc_cat_item_10ec16b3c61122760021a44ec7746bb3_patch_432b89cc&lt;/sys_update_name&gt;
+  &lt;/sc_cat_item&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+</unload>
