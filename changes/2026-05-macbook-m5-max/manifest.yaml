@@ -1,0 +1,101 @@
+# Catalog item clone — Developer Laptop (Mac) -> MacBook Pro 16" M5 Max
+#
+# Source item on dev392282: sc_cat_item 774906834fbb4200086eeed18110c737
+#
+# Generate:
+#   node scripts/build-update-set.js \
+#     /c/servicenow-coder-global/changes/2026-05-macbook-m5-max/
+#
+# Preview against live instance:
+#   .venv/Scripts/python scripts/python/preview-update-set.py \
+#     /c/servicenow-coder-global/changes/2026-05-macbook-m5-max/built/update-set.xml
+
+name: "Catalog — MacBook Pro 16\" M5 Max"
+description: |
+    Adds a new "MacBook Pro 16\" M5 Max" catalog item to the Service Catalog
+    under the Hardware category, cloned from the existing Developer Laptop (Mac)
+    item (sys_id 774906834fbb4200086eeed18110c737). Updated specs and pricing
+    for the Apple M5 Max generation.
+
+application: global
+target_release: 2026-Q2
+
+intent: |
+    Provide an up-to-date developer laptop option in the catalog reflecting
+    current Apple Silicon hardware. Keeps the same software variable pattern
+    (checkboxes for optional software + free-text field) as the source item.
+
+artifacts:
+    - type: catalog_item
+      name: "MacBook Pro 16\" M5 Max"
+      short_description: "MacBook Pro 16-inch with Apple M5 Max chip"
+      description: |
+          <p><strong><font size="3">MacBook Pro 16" M5 Max</font></strong></p>
+          <p><font size="2" face="arial,helvetica,sans-serif">The most powerful MacBook Pro ever. The M5 Max chip delivers extraordinary performance for the most demanding pro workflows — compiling, rendering, machine learning, and large-scale data analysis.</font></p>
+          <p><font size="2" face="arial,helvetica,sans-serif"><strong>Technical Specs:</strong></font></p>
+          <ul>
+            <li><font size="2" face="arial,helvetica,sans-serif">Apple M5 Max chip (16-core CPU, 40-core GPU)</font></li>
+            <li><font size="2" face="arial,helvetica,sans-serif">48GB unified memory</font></li>
+            <li><font size="2" face="arial,helvetica,sans-serif">1TB SSD storage</font></li>
+            <li><font size="2" face="arial,helvetica,sans-serif">16.2-inch Liquid Retina XDR display, 120Hz ProMotion</font></li>
+            <li><font size="2" face="arial,helvetica,sans-serif">22-hour battery life</font></li>
+            <li><font size="2" face="arial,helvetica,sans-serif">MagSafe 3, Thunderbolt 5 (x3), HDMI, SDXC</font></li>
+            <li><font size="2" face="arial,helvetica,sans-serif">Backlit Magic Keyboard with Touch ID</font></li>
+          </ul>
+      price: 3499
+      cost: 0
+      recurring_price: 0
+      active: true
+      availability: on_both
+      access_type: restricted
+      roles: snc_internal
+      catalogs: e0d08b13c3330100c8b837659bba8fb4
+      category: d258b953c611227a0146101fb1be7c31
+      delivery_time: "1970-01-03 00:00:00"
+      fulfillment_automation_level: semi_automated
+      flow_designer_flow: 30f3d26187e92300e0ef0cf888cb0b91
+      variables:
+          - name: optional_label
+            question_text: Optional Software
+            type: 11
+            order: 0
+            mandatory: false
+
+          - name: acrobat
+            question_text: Adobe Acrobat
+            type: 7
+            order: 100
+            mandatory: false
+
+          - name: photoshop
+            question_text: Adobe Photoshop
+            type: 7
+            order: 200
+            mandatory: false
+
+          - name: eclipse_ide
+            question_text: Eclipse IDE
+            type: 7
+            order: 300
+            mandatory: false
+            default_value: "True"
+
+          - name: Additional_software_requirements
+            question_text: Additional software requirements
+            type: 2
+            order: 400
+            mandatory: false
+
+estimated_impact:
+    tables_modified:
+        - sc_cat_item
+        - item_option_new
+    bulk_data_changes: false
+    rollback_complexity: low
+    notes: |
+        - Net-new sc_cat_item record — no risk to existing Developer Laptop (Mac)
+          or any other catalog item.
+        - 5 variables (1 label, 3 checkboxes, 1 multi-line text), no question_choice
+          records needed (no dropdown variables).
+        - Rollback: deactivate the sc_cat_item (active=false). Deterministic sys_ids
+          stay stable for a future re-activation.

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2026-05-20 07:44:56">
+  <sys_remote_update_set action="INSERT_OR_UPDATE">
+    <sys_id>350e64b96b458e25191d7c8081b20509</sys_id>
+    <name>Catalog — MacBook Pro 16&quot; M5 Max</name>
+    <description>Adds a new &quot;MacBook Pro 16\&quot; M5 Max&quot; catalog item to the Service Catalog
+under the Hardware category, cloned from the existing Developer Laptop (Mac)
+item (sys_id 774906834fbb4200086eeed18110c737). Updated specs and pricing
+for the Apple M5 Max generation.
+</description>
+    <state>loaded</state>
+    <application>global</application>
+    <release_date>2026-05-20 07:44:56</release_date>
+    <inserted>2026-05-20 07:44:56</inserted>
+  </sys_remote_update_set>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>sc_cat_item_e5471164167195981546a5abdd6388c9</name>
+    <target_name>MacBook Pro 16&quot; M5 Max</target_name>
+    <type>Catalog Item</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>6287b677c0cb7baa91e70eff1e12f575b631566017574fd773fbcd0c0478f2bf</payload_hash>
+    <remote_update_set>350e64b96b458e25191d7c8081b20509</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;sc_cat_item&quot;&gt;
+  &lt;sc_cat_item action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;e5471164167195981546a5abdd6388c9&lt;/sys_id&gt;
+    &lt;name&gt;MacBook Pro 16&amp;quot; M5 Max&lt;/name&gt;
+    &lt;sys_name&gt;MacBook Pro 16&amp;quot; M5 Max&lt;/sys_name&gt;
+    &lt;short_description&gt;MacBook Pro 16-inch with Apple M5 Max chip&lt;/short_description&gt;
+    &lt;description&gt;&lt;![CDATA[&lt;p&gt;&lt;strong&gt;&lt;font size=&quot;3&quot;&gt;MacBook Pro 16&quot; M5 Max&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font size=&quot;2&quot; face=&quot;arial,helvetica,sans-serif&quot;&gt;The most powerful MacBook Pro ever. The M5 Max chip delivers extraordinary performance for the most demanding pro workflows — compiling, rendering, machine learning, and large-scale data analysis.&lt;/font&gt;&lt;/p&gt;
+&lt;p&gt;&lt;font size=&quot;2&quot; face=&quot;arial,helvetica,sans-serif&quot;&gt;&lt;strong&gt;Technical Specs:&lt;/strong&gt;&lt;/font&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;font size=&quot;2&quot; face=&quot;arial,helvetica,sans-serif&quot;&gt;Apple M5 Max chip (16-core CPU, 40-core GPU)&lt;/font&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;font size=&quot;2&quot; face=&quot;arial,helvetica,sans-serif&quot;&gt;48GB unified memory&lt;/font&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;font size=&quot;2&quot; face=&quot;arial,helvetica,sans-serif&quot;&gt;1TB SSD storage&lt;/font&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;font size=&quot;2&quot; face=&quot;arial,helvetica,sans-serif&quot;&gt;16.2-inch Liquid Retina XDR display, 120Hz ProMotion&lt;/font&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;font size=&quot;2&quot; face=&quot;arial,helvetica,sans-serif&quot;&gt;22-hour battery life&lt;/font&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;font size=&quot;2&quot; face=&quot;arial,helvetica,sans-serif&quot;&gt;MagSafe 3, Thunderbolt 5 (x3), HDMI, SDXC&lt;/font&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;font size=&quot;2&quot; face=&quot;arial,helvetica,sans-serif&quot;&gt;Backlit Magic Keyboard with Touch ID&lt;/font&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]]&gt;&lt;/description&gt;
+    &lt;price&gt;3499&lt;/price&gt;
+    &lt;cost&gt;0&lt;/cost&gt;
+    &lt;recurring_price&gt;0&lt;/recurring_price&gt;
+    &lt;list_price&gt;0&lt;/list_price&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;billable&gt;false&lt;/billable&gt;
+    &lt;availability&gt;on_both&lt;/availability&gt;
+    &lt;access_type&gt;restricted&lt;/access_type&gt;
+    &lt;roles&gt;snc_internal&lt;/roles&gt;
+    &lt;sc_catalogs&gt;e0d08b13c3330100c8b837659bba8fb4&lt;/sc_catalogs&gt;
+    &lt;category&gt;d258b953c611227a0146101fb1be7c31&lt;/category&gt;
+    &lt;delivery_time&gt;1970-01-03 00:00:00&lt;/delivery_time&gt;
+    &lt;type&gt;item&lt;/type&gt;
+    &lt;use_sc_layout&gt;true&lt;/use_sc_layout&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;mobile_picture_type&gt;use_desktop_picture&lt;/mobile_picture_type&gt;
+    &lt;display_price_property&gt;non_zero&lt;/display_price_property&gt;
+    &lt;fulfillment_automation_level&gt;semi_automated&lt;/fulfillment_automation_level&gt;
+    &lt;owner&gt;&lt;/owner&gt;
+    &lt;flow_designer_flow&gt;30f3d26187e92300e0ef0cf888cb0b91&lt;/flow_designer_flow&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;sc_cat_item&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;sc_cat_item_e5471164167195981546a5abdd6388c9&lt;/sys_update_name&gt;
+  &lt;/sc_cat_item&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>item_option_new_e88a5f0bf0b71a11855227c4f3a22da2</name>
+    <target_name>MacBook Pro 16&quot; M5 Max :: optional_label</target_name>
+    <type>Variable</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>7ec215762e83dc054873660cd86444afae26cb20dfd053636ffb3651dbd15221</payload_hash>
+    <remote_update_set>350e64b96b458e25191d7c8081b20509</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;item_option_new&quot;&gt;
+  &lt;item_option_new action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;e88a5f0bf0b71a11855227c4f3a22da2&lt;/sys_id&gt;
+    &lt;cat_item&gt;e5471164167195981546a5abdd6388c9&lt;/cat_item&gt;
+    &lt;name&gt;optional_label&lt;/name&gt;
+    &lt;sys_name&gt;Optional Software&lt;/sys_name&gt;
+    &lt;question_text&gt;Optional Software&lt;/question_text&gt;
+    &lt;type&gt;11&lt;/type&gt;
+    &lt;order&gt;0&lt;/order&gt;
+    &lt;mandatory&gt;false&lt;/mandatory&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;default_value&gt;&lt;/default_value&gt;
+    &lt;layout&gt;normal&lt;/layout&gt;
+    &lt;visibility&gt;1&lt;/visibility&gt;
+    &lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;
+    &lt;include_none&gt;false&lt;/include_none&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;item_option_new_e88a5f0bf0b71a11855227c4f3a22da2&lt;/sys_update_name&gt;
+  &lt;/item_option_new&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>item_option_new_4ed8cb705241592ae0036f28d10b7276</name>
+    <target_name>MacBook Pro 16&quot; M5 Max :: acrobat</target_name>
+    <type>Variable</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>57c3e2f2cb85cabe8901fa94b6ceab117c4bce2db27c9edefc8c5689b889da0d</payload_hash>
+    <remote_update_set>350e64b96b458e25191d7c8081b20509</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;item_option_new&quot;&gt;
+  &lt;item_option_new action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;4ed8cb705241592ae0036f28d10b7276&lt;/sys_id&gt;
+    &lt;cat_item&gt;e5471164167195981546a5abdd6388c9&lt;/cat_item&gt;
+    &lt;name&gt;acrobat&lt;/name&gt;
+    &lt;sys_name&gt;Adobe Acrobat&lt;/sys_name&gt;
+    &lt;question_text&gt;Adobe Acrobat&lt;/question_text&gt;
+    &lt;type&gt;7&lt;/type&gt;
+    &lt;order&gt;100&lt;/order&gt;
+    &lt;mandatory&gt;false&lt;/mandatory&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;default_value&gt;&lt;/default_value&gt;
+    &lt;layout&gt;normal&lt;/layout&gt;
+    &lt;visibility&gt;1&lt;/visibility&gt;
+    &lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;
+    &lt;include_none&gt;false&lt;/include_none&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;item_option_new_4ed8cb705241592ae0036f28d10b7276&lt;/sys_update_name&gt;
+  &lt;/item_option_new&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>item_option_new_6dc2d4fca7f27ac641231a3f32608a96</name>
+    <target_name>MacBook Pro 16&quot; M5 Max :: photoshop</target_name>
+    <type>Variable</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>a746e83f82699e53e3d37fecf5731d83eecaf3493aad5db3364f1d859da0c45d</payload_hash>
+    <remote_update_set>350e64b96b458e25191d7c8081b20509</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;item_option_new&quot;&gt;
+  &lt;item_option_new action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;6dc2d4fca7f27ac641231a3f32608a96&lt;/sys_id&gt;
+    &lt;cat_item&gt;e5471164167195981546a5abdd6388c9&lt;/cat_item&gt;
+    &lt;name&gt;photoshop&lt;/name&gt;
+    &lt;sys_name&gt;Adobe Photoshop&lt;/sys_name&gt;
+    &lt;question_text&gt;Adobe Photoshop&lt;/question_text&gt;
+    &lt;type&gt;7&lt;/type&gt;
+    &lt;order&gt;200&lt;/order&gt;
+    &lt;mandatory&gt;false&lt;/mandatory&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;default_value&gt;&lt;/default_value&gt;
+    &lt;layout&gt;normal&lt;/layout&gt;
+    &lt;visibility&gt;1&lt;/visibility&gt;
+    &lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;
+    &lt;include_none&gt;false&lt;/include_none&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;item_option_new_6dc2d4fca7f27ac641231a3f32608a96&lt;/sys_update_name&gt;
+  &lt;/item_option_new&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>item_option_new_ab214c20a2acd96b4fbf31ff6fbdee0d</name>
+    <target_name>MacBook Pro 16&quot; M5 Max :: eclipse_ide</target_name>
+    <type>Variable</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>76d0c8055484877394f54a662a81c0b4dcfd5540923e9e381ee65255cb3da3ca</payload_hash>
+    <remote_update_set>350e64b96b458e25191d7c8081b20509</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;item_option_new&quot;&gt;
+  &lt;item_option_new action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;ab214c20a2acd96b4fbf31ff6fbdee0d&lt;/sys_id&gt;
+    &lt;cat_item&gt;e5471164167195981546a5abdd6388c9&lt;/cat_item&gt;
+    &lt;name&gt;eclipse_ide&lt;/name&gt;
+    &lt;sys_name&gt;Eclipse IDE&lt;/sys_name&gt;
+    &lt;question_text&gt;Eclipse IDE&lt;/question_text&gt;
+    &lt;type&gt;7&lt;/type&gt;
+    &lt;order&gt;300&lt;/order&gt;
+    &lt;mandatory&gt;false&lt;/mandatory&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;default_value&gt;True&lt;/default_value&gt;
+    &lt;layout&gt;normal&lt;/layout&gt;
+    &lt;visibility&gt;1&lt;/visibility&gt;
+    &lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;
+    &lt;include_none&gt;false&lt;/include_none&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;item_option_new_ab214c20a2acd96b4fbf31ff6fbdee0d&lt;/sys_update_name&gt;
+  &lt;/item_option_new&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>item_option_new_dc48aa221a47cbdfe6cb267dfb0dd058</name>
+    <target_name>MacBook Pro 16&quot; M5 Max :: Additional_software_requirements</target_name>
+    <type>Variable</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>dffc0ddea14e1f0f63636f716946756da0220d53d3eef8909128d302f3dbbac5</payload_hash>
+    <remote_update_set>350e64b96b458e25191d7c8081b20509</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;item_option_new&quot;&gt;
+  &lt;item_option_new action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;dc48aa221a47cbdfe6cb267dfb0dd058&lt;/sys_id&gt;
+    &lt;cat_item&gt;e5471164167195981546a5abdd6388c9&lt;/cat_item&gt;
+    &lt;name&gt;Additional_software_requirements&lt;/name&gt;
+    &lt;sys_name&gt;Additional software requirements&lt;/sys_name&gt;
+    &lt;question_text&gt;Additional software requirements&lt;/question_text&gt;
+    &lt;type&gt;2&lt;/type&gt;
+    &lt;order&gt;400&lt;/order&gt;
+    &lt;mandatory&gt;false&lt;/mandatory&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;default_value&gt;&lt;/default_value&gt;
+    &lt;layout&gt;normal&lt;/layout&gt;
+    &lt;visibility&gt;1&lt;/visibility&gt;
+    &lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;
+    &lt;include_none&gt;false&lt;/include_none&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;item_option_new_dc48aa221a47cbdfe6cb267dfb0dd058&lt;/sys_update_name&gt;
+  &lt;/item_option_new&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+</unload>
