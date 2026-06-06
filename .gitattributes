@@ -1,0 +1,10 @@
+# Generated update-set artifacts are sha256-hashed on LF content by
+# servicenow-coder/scripts/build-update-set.js. Pin them to LF so the hash
+# survives a checkout on Windows — autocrlf would otherwise rewrite the XML to
+# CRLF and break import-update-set.js integrity verification.
+changes/**/built/update-set.xml   text eol=lf
+changes/**/built/*.sha256         text eol=lf
+
+# Keep the rest of the human-authored artifacts LF too, for consistent diffs.
+*.yaml text eol=lf
+*.md   text eol=lf
