@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2026-06-06 02:56:28">
+  <sys_remote_update_set action="INSERT_OR_UPDATE">
+    <sys_id>796d91430869622774343c7a5ee3ae23</sys_id>
+    <name>FSM Change Bridge — correlation fields</name>
+    <description>Adds paired reference fields linking change_task and wm_order for the FSM
+Work Order &lt;-&gt; Change Task bridge. change_task.u_linked_work_order points at
+the mirrored work order; wm_order.u_linked_change_task points back at the
+change task. Both nullable. Pairs with the scoped app x_jw_fsmchgbr.
+</description>
+    <state>loaded</state>
+    <application>global</application>
+    <release_date>2026-06-06 02:56:28</release_date>
+    <inserted>2026-06-06 02:56:28</inserted>
+  </sys_remote_update_set>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>sys_dictionary_change_task_u_linked_work_order</name>
+    <target_name>change_task.u_linked_work_order</target_name>
+    <type>Dictionary</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>c877f3a79e66feeb50df798e406566dd7a277ad1f9bcb43c10578e9db2b38d5e</payload_hash>
+    <remote_update_set>796d91430869622774343c7a5ee3ae23</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;sys_dictionary&quot;&gt;
+  &lt;sys_dictionary action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;bfb696cb212684c63eb105fcbab76902&lt;/sys_id&gt;
+    &lt;name&gt;change_task&lt;/name&gt;
+    &lt;element&gt;u_linked_work_order&lt;/element&gt;
+    &lt;column_label&gt;Linked Work Order&lt;/column_label&gt;
+    &lt;internal_type&gt;reference&lt;/internal_type&gt;
+    &lt;reference&gt;wm_order&lt;/reference&gt;
+    &lt;reference_qual/&gt;
+    &lt;default_value/&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;mandatory&gt;false&lt;/mandatory&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;comments&gt;Reference to the FSM work order mirrored from this change task by the
+x_jw_fsmchgbr bridge. Empty for change tasks that have no field-work
+counterpart. Set by FsmChangeBridge, not by hand.
+&lt;/comments&gt;
+    &lt;sys_update_name&gt;sys_dictionary_change_task_u_linked_work_order&lt;/sys_update_name&gt;
+  &lt;/sys_dictionary&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>sys_dictionary_wm_order_u_linked_change_task</name>
+    <target_name>wm_order.u_linked_change_task</target_name>
+    <type>Dictionary</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>dd5d4753665533b43afed307c8e5c94b3f821226bb307f9cf839e1ded1683360</payload_hash>
+    <remote_update_set>796d91430869622774343c7a5ee3ae23</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;sys_dictionary&quot;&gt;
+  &lt;sys_dictionary action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;71f6bcd699c7502dd4e7f5aadcdc5820&lt;/sys_id&gt;
+    &lt;name&gt;wm_order&lt;/name&gt;
+    &lt;element&gt;u_linked_change_task&lt;/element&gt;
+    &lt;column_label&gt;Linked Change Task&lt;/column_label&gt;
+    &lt;internal_type&gt;reference&lt;/internal_type&gt;
+    &lt;reference&gt;change_task&lt;/reference&gt;
+    &lt;reference_qual/&gt;
+    &lt;default_value/&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;mandatory&gt;false&lt;/mandatory&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;comments&gt;Reference to the change task mirrored from this work order by the
+x_jw_fsmchgbr bridge. Empty for work orders with no change counterpart
+(e.g. purely reactive WOs). Set by FsmChangeBridge, not by hand.
+&lt;/comments&gt;
+    &lt;sys_update_name&gt;sys_dictionary_wm_order_u_linked_change_task&lt;/sys_update_name&gt;
+  &lt;/sys_dictionary&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+</unload>
