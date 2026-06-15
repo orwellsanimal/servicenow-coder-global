@@ -4,24 +4,35 @@
 [`servicenow-coder`](https://github.com/orwellsanimal/servicenow-coder).
 
 Where `servicenow-coder` ships scoped apps through fully-automated CI/CD,
-this repo ships **global-scope changes through human-gated update sets**.
-Each change is an AI-generated, deterministic artifact reviewed in a pull
-request and committed to the target ServiceNow instance by a human.
+this repo ships **AI-generated global-scope changes through human-gated
+update sets**. Each change is a deterministic, manifest-driven XML artifact
+reviewed in a pull request and committed to the target ServiceNow instance
+by a human.
 
-This is the deliberate gating tier of the agentic SDLC.
+This is the **deliberate gating tier of the agentic SDLC**. Scoped apps
+move fast and auto-deploy; global-scope changes go slow and need eyes.
+
+[![Validate](https://github.com/orwellsanimal/servicenow-coder-global/actions/workflows/validate.yml/badge.svg)](https://github.com/orwellsanimal/servicenow-coder-global/actions/workflows/validate.yml)
+
+## The three-tier model
+
+| Tier | Repository | Velocity | Gate |
+|---|---|---|---|
+| Scoped apps (Fluent SDK, non-prod) | `servicenow-coder` | Tests pass → auto-merge → auto-deploy | ATF green + CI |
+| **Global-scope changes** | **this repo** | **AI generates → PR review → human commit** | **Reviewer + optional CAB** |
+| Production scoped apps | `servicenow-coder` via Application Repository | Publish → approve → deploy | Approver on destination instance |
+
+Mixing these obscures the risk model. Keeping them separate respects it.
 
 ## Why a separate repo?
 
 | Concern | Scoped apps (`servicenow-coder`) | Global changes (this repo) |
 |---------|----------------------------------|----------------------------|
-| Deploy mechanism | `now-sdk install` via CI/CD | Update set import via Studio |
+| Deploy mechanism | `now-sdk install` via CI/CD | Update set import via Studio + CICD API |
 | Approval flow | Tests pass → auto-merge | CAB / human review → human commit |
-| Audit trail | Git history + ATF results | Git history + `sys_update_xml` |
-| Blast radius | One scoped namespace | Cross-cutting platform behavior |
+| Audit trail | Git history + ATF results | Git history + `sys_update_xml` + import preview log |
+| Blast radius | One scoped namespace | Cross-cutting platform behaviour |
 | Rollback | `now-sdk rollback <context>` | Update set back-out |
-
-Mixing these would obscure the scoped-app pipeline. Keeping them separate
-respects the different risk models.
 
 ## How a change flows
 
@@ -63,6 +74,8 @@ respects the different risk models.
     python ../servicenow-coder/scripts/python/preview-update-set.py
        changes/<date>-<name>/built/update-set.xml --post-import
 ```
+
+Steps 6–9 can be partially automated by [`scripts/import-update-set.js`](https://github.com/orwellsanimal/servicenow-coder/blob/main/scripts/import-update-set.js) in the sister repo: it detects the uploaded update set, calls the CICD API to preview, prompts for confirmation, commits, and runs the Python verification — all in one command.
 
 See [`docs/gating-procedure.md`](docs/gating-procedure.md) for the full procedure.
 
@@ -128,11 +141,17 @@ Full schema: [`docs/manifest-schema.md`](docs/manifest-schema.md).
 
 ## Supported artifact types
 
-**Phase 1** (today):
-- `dictionary_entry` — `sys_dictionary` rows for custom fields on existing tables
-- `business_rule` — `sys_script` rows for global-scope Business Rules
+**Phase 1 (shipped):**
 
-**Phase 2** (planned):
+| Type | What it produces |
+|---|---|
+| `dictionary_entry` | `sys_dictionary` rows for custom fields on existing tables |
+| `business_rule` | `sys_script` rows for global-scope Business Rules |
+| `catalog_item` | `sc_cat_item` with nested `item_option_new` variables, `question_choice` values, optional `sc_cat_item_category` mappings. One manifest entry → multiple `sys_update_xml` records under the same parent. |
+| `catalog_item_patch` | Partial-update of an existing `sc_cat_item` by sys_id. Emits a `sys_update_xml` carrying only the fields named in `fields:`. ServiceNow's INSERT_OR_UPDATE semantics preserve unmentioned fields. |
+
+**Phase 2 (planned):**
+
 - `db_object` — new tables (`sys_db_object`)
 - `choice` — choice values (`sys_choice`)
 - `ui_policy` — UI Policies (`sys_ui_policy`)
@@ -141,10 +160,7 @@ Full schema: [`docs/manifest-schema.md`](docs/manifest-schema.md).
 
 ## Code Signing (enterprise extension)
 
-For environments with ServiceNow Vault + Code Signing enabled, the generated
-update set XML can be cryptographically signed before being committed to the
-protected instance. The Phase 1 SHA-256 hash provides tamper evidence; Code
-Signing adds cryptographic non-repudiation. The structural model is the same:
+For environments with ServiceNow Vault + Code Signing enabled, the generated update set XML can be cryptographically signed before being committed to the protected instance. The Phase 1 SHA-256 hash provides tamper evidence; Code Signing adds cryptographic non-repudiation. The structural model is the same:
 
 - `servicenow-docs/markdown/platform-security/sign-specific-records.md`
 - `servicenow-docs/markdown/platform-security/code-signing-landing.md`
@@ -153,5 +169,7 @@ Signing slots between PR approval and import.
 
 ## Related
 
-- [`servicenow-coder`](https://github.com/orwellsanimal/servicenow-coder) — scoped-app workspace and home of the generator
+- [`servicenow-coder`](https://github.com/orwellsanimal/servicenow-coder) — scoped-app workspace and home of the generator + importer
+- [`servicenow-coder`/docs/architecture/0001-update-set-as-artifact.md](https://github.com/orwellsanimal/servicenow-coder/blob/main/docs/architecture/0001-update-set-as-artifact.md) — ADR-0001, the architectural rationale for this split
+- [`servicenow-coder`/docs/architecture/0004-catalog-item-patch-artifact.md](https://github.com/orwellsanimal/servicenow-coder/blob/main/docs/architecture/0004-catalog-item-patch-artifact.md) — ADR-0004, the `catalog_item_patch` design
 - ServiceNow docs: System Update Sets, Customer Updates table, Code Signing
