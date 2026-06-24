@@ -1,0 +1,68 @@
+# Major Incident Grouping — duplicate-detection Business Rule (global scope).
+#
+# A before-insert BR on the OOTB `incident` table. It cannot ship via the
+# scoped-app pipeline (global table, global BR), so it ships as an
+# update-set-as-artifact (ADR-0001).
+#
+# Generate the update set XML (run from the servicenow-coder repo root):
+#   node scripts/build-update-set.js ../servicenow-coder-global/changes/2026-06-major-incident-grouping/
+
+name: Major Incident Grouping — duplicate detection BR
+description: |
+    Global before-insert Business Rule on incident that detects incidents
+    sharing a short_description within a 10-minute window and groups them as
+    children (parent_incident) under a single promoted Major Incident parent.
+
+application: global
+target_release: 2026-Q2
+
+intent: |
+    Cut major-incident triage noise. When a real outage spawns a burst of
+    look-alike incidents, responders shouldn't hand-stitch them together. This
+    rule auto-detects same-short_description reports created within 10 minutes,
+    promotes the earliest to a Major Incident (major_incident_state=accepted,
+    impact/urgency=High), and parents the rest under it — so the Major Incident
+    Workbench shows one parent with its children already attached. A lone
+    incident never becomes a Major Incident.
+
+artifacts:
+    - type: business_rule
+      name: Group duplicate incidents under major incident
+      table: incident
+      description: |
+          Before insert, links new incidents that share a short_description with
+          other active incidents created in the last 10 minutes to a common
+          Major Incident parent (promoting the earliest sibling when none
+          exists). Self-guards on empty short_description, already-a-child, and
+          already-a-Major-Incident.
+      when: before
+      order: 100
+      active: true
+      advanced: true
+      action_insert: true
+      action_update: false
+      action_query: false
+      action_delete: false
+      condition: ''
+      script_file: group-duplicate-incidents.js
+
+estimated_impact:
+    tables_modified:
+        - incident
+    bulk_data_changes: false
+    rollback_complexity: low
+    notes: |
+        - Prerequisite: com.snc.incident.mim must be active (supplies
+          incident.major_incident_state). Confirmed active on dev392282
+          2026-06-24; choices proposed/accepted/rejected/canceled.
+        - No schema change — adds one sys_script row. parent_incident and
+          major_incident_state already exist OOTB / via MIM.
+        - Runtime writes: on a duplicate burst the BR sets parent_incident on
+          children and flips the earliest sibling to major_incident_state=
+          accepted with impact/urgency=High. No backfill of historical data.
+        - Insert-only: editing a short_description after creation will not
+          regroup. Exact-match key only (no fuzzy matching). See README
+          "Known edge cases".
+        - Rollback: deactivate or delete the business rule. Already-grouped
+          incidents keep their parent_incident / major_incident_state until
+          manually unwound; no data is corrupted by removing the rule.
