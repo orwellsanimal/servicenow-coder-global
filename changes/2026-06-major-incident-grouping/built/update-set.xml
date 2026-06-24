@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2026-06-24 15:49:20">
+  <sys_remote_update_set action="INSERT_OR_UPDATE">
+    <sys_id>d234e25d57a06918a9598b4f96c27386</sys_id>
+    <name>Major Incident Grouping — duplicate detection BR</name>
+    <description>Global before-insert Business Rule on incident that detects incidents
+sharing a short_description within a 10-minute window and groups them as
+children (parent_incident) under a single promoted Major Incident parent.
+</description>
+    <state>loaded</state>
+    <application>global</application>
+    <release_date>2026-06-24 15:49:20</release_date>
+    <inserted>2026-06-24 15:49:20</inserted>
+  </sys_remote_update_set>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>sys_script_de85a0bd9e5ea24a1d11344177c418d4</name>
+    <target_name>Group duplicate incidents under major incident</target_name>
+    <type>Business Rule</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>a420aecb20f41320cd9997f04f1e437b799020f13d344b2401ef9b78a4bcdc30</payload_hash>
+    <remote_update_set>d234e25d57a06918a9598b4f96c27386</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;sys_script&quot;&gt;
+  &lt;sys_script action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;de85a0bd9e5ea24a1d11344177c418d4&lt;/sys_id&gt;
+    &lt;name&gt;Group duplicate incidents under major incident&lt;/name&gt;
+    &lt;collection&gt;incident&lt;/collection&gt;
+    &lt;description&gt;Before insert, links new incidents that share a short_description with
+other active incidents created in the last 10 minutes to a common
+Major Incident parent (promoting the earliest sibling when none
+exists). Self-guards on empty short_description, already-a-child, and
+already-a-Major-Incident.
+&lt;/description&gt;
+    &lt;when&gt;before&lt;/when&gt;
+    &lt;order&gt;100&lt;/order&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;advanced&gt;true&lt;/advanced&gt;
+    &lt;action_insert&gt;true&lt;/action_insert&gt;
+    &lt;action_update&gt;false&lt;/action_update&gt;
+    &lt;action_query&gt;false&lt;/action_query&gt;
+    &lt;action_delete&gt;false&lt;/action_delete&gt;
+    &lt;condition&gt;&lt;/condition&gt;
+    &lt;script&gt;&lt;![CDATA[/**
+ * Business Rule: Group duplicate incidents under a major-incident parent
+ * ---------------------------------------------------------------------------
+ * Table : incident
+ * When  : before / insert        (parent is resolved before the row is written,
+ *                                  so the child lands already linked — no second
+ *                                  write to `current`, no recursive BR firing)
+ * Order : 100
+ *
+ * Behaviour
+ *   When a new incident is created, look for OTHER active incidents that share
+ *   the same short_description and were created within the trailing window
+ *   (WINDOW_MIN). If found:
+ *     1. If one of them is already an accepted Major Incident -&gt; attach current
+ *        to it as a child (parent_incident).
+ *     2. Otherwise promote the EARLIEST sibling to a Major Incident
+ *        (major_incident_state = &apos;accepted&apos;), self-heal by re-parenting any
+ *        other ungrouped siblings to it, and attach current as a child.
+ *   A lone incident (no duplicate in the window) is left untouched — we never
+ *   create a Major Incident from a single report.
+ *
+ * Prerequisites
+ *   - Major Incident Management plugin (com.snc.incident.mim) must be ACTIVE.
+ *     It supplies the `major_incident_state` field. Confirmed active on
+ *     dev392282 (2026-06-24): choices proposed/accepted/rejected/canceled.
+ *
+ * Tunables: WINDOW_MIN (window length), and whether to elevate priority.
+ */
+(function executeRule(current, previous /*null when async*/) {
+
+    var WINDOW_MIN = 10;          // grouping window, minutes
+    var MI_STATE_ACCEPTED = &apos;accepted&apos;;
+
+    var desc = (&apos;&apos; + current.short_description).trim();
+
+    // --- guards: nothing to do --------------------------------------------
+    if (!desc) return;                                 // no short description
+    if (!current.parent_incident.nil()) return;        // already a child
+    if (current.major_incident_state == MI_STATE_ACCEPTED) return; // already an MI
+
+    // Window lower bound (now - WINDOW_MIN minutes)
+    var cutoff = new GlideDateTime();
+    cutoff.subtract(WINDOW_MIN * 60 * 1000);
+
+    // 1) Existing major-incident parent for this short_description?
+    var parentId = findExistingMajor(desc, cutoff);
+
+    // 2) Else, if siblings exist, promote the earliest into the parent.
+    if (!parentId)
+        parentId = promoteFromSiblings(desc, cutoff);
+
+    // 3) No parent and no siblings -&gt; ordinary incident, leave it alone.
+    if (!parentId) return;
+
+    // Link current as a child. before/insert =&gt; simple assignment, no update().
+    current.parent_incident = parentId;
+
+    // ----------------------------------------------------------------------
+
+    function findExistingMajor(d, cut) {
+        var gr = new GlideRecord(&apos;incident&apos;);
+        gr.addActiveQuery();
+        gr.addQuery(&apos;short_description&apos;, d);
+        gr.addQuery(&apos;major_incident_state&apos;, MI_STATE_ACCEPTED);
+        gr.addQuery(&apos;sys_created_on&apos;, &apos;&gt;=&apos;, cut);
+        gr.orderBy(&apos;sys_created_on&apos;);            // oldest accepted MI wins
+        gr.setLimit(1);
+        gr.query();
+        return gr.next() ? gr.getUniqueValue() : null;
+    }
+
+    function promoteFromSiblings(d, cut) {
+        // Collect ungrouped, non-MI siblings in the window, oldest first.
+        var ids = [];
+        var gr = new GlideRecord(&apos;incident&apos;);
+        gr.addActiveQuery();
+        gr.addQuery(&apos;short_description&apos;, d);
+        gr.addQuery(&apos;sys_created_on&apos;, &apos;&gt;=&apos;, cut);
+        gr.addNullQuery(&apos;parent_incident&apos;);
+        gr.addQuery(&apos;major_incident_state&apos;, &apos;!=&apos;, MI_STATE_ACCEPTED);
+        gr.orderBy(&apos;sys_created_on&apos;);
+        gr.query();
+        while (gr.next())
+            ids.push(gr.getUniqueValue());
+
+        if (ids.length === 0) return null;       // current is the only one (so far)
+
+        var parentSysId = ids.shift();           // earliest sibling -&gt; the MI parent
+
+        // Promote the parent into a Major Incident.
+        var mi = new GlideRecord(&apos;incident&apos;);
+        if (!mi.get(parentSysId)) return null;
+        mi.major_incident_state = MI_STATE_ACCEPTED;
+        // Elevate severity. impact+urgency drive priority via the lookup rules;
+        // setting them avoids fighting the priority-calculation engine.
+        mi.impact = 1;                           // High
+        mi.urgency = 1;                           // High
+        mi.work_notes = &apos;Auto-promoted to Major Incident: &apos; + ids.length +
+            &apos; duplicate-or-more incident(s) with the same short description &apos; +
+            &apos;within &apos; + WINDOW_MIN + &apos; minutes.&apos;;
+        mi.update();
+
+        // Self-heal: re-parent any other already-existing ungrouped siblings.
+        for (var i = 0; i &lt; ids.length; i++) {
+            var child = new GlideRecord(&apos;incident&apos;);
+            if (child.get(ids[i])) {
+                child.parent_incident = parentSysId;
+                child.update();
+            }
+        }
+        return parentSysId;
+    }
+
+})(current, previous);
+]]&gt;&lt;/script&gt;
+    &lt;sys_update_name&gt;sys_script_de85a0bd9e5ea24a1d11344177c418d4&lt;/sys_update_name&gt;
+  &lt;/sys_script&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+</unload>
