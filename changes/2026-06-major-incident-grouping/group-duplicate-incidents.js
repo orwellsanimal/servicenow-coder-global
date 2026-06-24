@@ -77,7 +77,11 @@
         gr.addQuery('short_description', d);
         gr.addQuery('sys_created_on', '>=', cut);
         gr.addNullQuery('parent_incident');
-        gr.addQuery('major_incident_state', '!=', MI_STATE_ACCEPTED);
+        // NB: do NOT add `major_incident_state != accepted` here. ServiceNow's
+        // `!=` operator excludes rows where the field is EMPTY, which is every
+        // freshly-created incident — it would filter out all real siblings. We
+        // don't need it anyway: findExistingMajor already ran first, so no
+        // accepted Major Incident exists in this window when we get here.
         gr.orderBy('sys_created_on');
         gr.query();
         while (gr.next())
