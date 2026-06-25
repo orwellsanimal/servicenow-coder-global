@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2026-06-25 01:59:50">
+  <sys_remote_update_set action="INSERT_OR_UPDATE">
+    <sys_id>806f7825ec5a545869bd91a26711de9e</sys_id>
+    <name>Catalog — Apple Vision Pro (clone of iPad pro)</name>
+    <description>Adds a new &quot;Apple Vision Pro&quot; catalog item to the Service Catalog under the
+same Hardware category as iPad pro, with Band size + Storage variables.
+Modeled on the existing iPad pro item (sys_id
+c3b9cbf29716cd1021983d1e6253afad).
+</description>
+    <state>loaded</state>
+    <application>global</application>
+    <release_date>2026-06-25 01:59:50</release_date>
+    <inserted>2026-06-25 01:59:50</inserted>
+  </sys_remote_update_set>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>sc_cat_item_deae0ebb09c38bb7a0a2681794779fc6</name>
+    <target_name>Apple Vision Pro</target_name>
+    <type>Catalog Item</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>738ab09431fa863f56ef1b9f0b98687ab6b47323a370835877929c234c6394c2</payload_hash>
+    <remote_update_set>806f7825ec5a545869bd91a26711de9e</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;sc_cat_item&quot;&gt;
+  &lt;sc_cat_item action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;deae0ebb09c38bb7a0a2681794779fc6&lt;/sys_id&gt;
+    &lt;name&gt;Apple Vision Pro&lt;/name&gt;
+    &lt;sys_name&gt;Apple Vision Pro&lt;/sys_name&gt;
+    &lt;short_description&gt;Request for Apple Vision Pro&lt;/short_description&gt;
+    &lt;description&gt;&lt;![CDATA[&lt;p&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Apple Vision Pro is a revolutionary spatial computer that blends digital content with your physical space, letting you navigate with your eyes, hands, and voice.&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;&lt;strong&gt;Key features:&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;ul style=&quot;list-style-position: inside;&quot;&gt;
+&lt;li style=&quot;font-size: 10pt;&quot;&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Display: dual micro-OLED, 23 million pixels&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot;font-size: 10pt;&quot;&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Chips: Apple M2 + R1&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot;font-size: 10pt;&quot;&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Operating system: visionOS&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot;font-size: 10pt;&quot;&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Audio: Spatial Audio with dynamic head tracking&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot;font-size: 10pt;&quot;&gt;&lt;span style=&quot;font-size: 10pt;&quot;&gt;Cameras: stereoscopic 3D capture for spatial photos and videos&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+]]&gt;&lt;/description&gt;
+    &lt;price&gt;3499&lt;/price&gt;
+    &lt;cost&gt;0&lt;/cost&gt;
+    &lt;recurring_price&gt;0&lt;/recurring_price&gt;
+    &lt;list_price&gt;0&lt;/list_price&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;billable&gt;false&lt;/billable&gt;
+    &lt;availability&gt;on_desktop&lt;/availability&gt;
+    &lt;access_type&gt;restricted&lt;/access_type&gt;
+    &lt;roles&gt;snc_internal&lt;/roles&gt;
+    &lt;sc_catalogs&gt;e0d08b13c3330100c8b837659bba8fb4&lt;/sc_catalogs&gt;
+    &lt;category&gt;d258b953c611227a0146101fb1be7c31&lt;/category&gt;
+    &lt;delivery_time&gt;1970-01-03 00:00:00&lt;/delivery_time&gt;
+    &lt;type&gt;item&lt;/type&gt;
+    &lt;use_sc_layout&gt;true&lt;/use_sc_layout&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;mobile_picture_type&gt;use_desktop_picture&lt;/mobile_picture_type&gt;
+    &lt;display_price_property&gt;non_zero&lt;/display_price_property&gt;
+    &lt;fulfillment_automation_level&gt;semi_automated&lt;/fulfillment_automation_level&gt;
+    &lt;owner&gt;&lt;/owner&gt;
+    &lt;flow_designer_flow&gt;30f3d26187e92300e0ef0cf888cb0b91&lt;/flow_designer_flow&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;sc_cat_item&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;sc_cat_item_deae0ebb09c38bb7a0a2681794779fc6&lt;/sys_update_name&gt;
+  &lt;/sc_cat_item&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>item_option_new_29cf0f776cba70dd9c1186e4f484b756</name>
+    <target_name>Apple Vision Pro :: band_size</target_name>
+    <type>Variable</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>f8b12cfd3cc174b181d376a70c1f6a05c7cd7073fa30c3db0fadc1c083da2209</payload_hash>
+    <remote_update_set>806f7825ec5a545869bd91a26711de9e</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;item_option_new&quot;&gt;
+  &lt;item_option_new action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;29cf0f776cba70dd9c1186e4f484b756&lt;/sys_id&gt;
+    &lt;cat_item&gt;deae0ebb09c38bb7a0a2681794779fc6&lt;/cat_item&gt;
+    &lt;name&gt;band_size&lt;/name&gt;
+    &lt;sys_name&gt;Choose the band size&lt;/sys_name&gt;
+    &lt;question_text&gt;Choose the band size&lt;/question_text&gt;
+    &lt;type&gt;3&lt;/type&gt;
+    &lt;order&gt;10&lt;/order&gt;
+    &lt;mandatory&gt;true&lt;/mandatory&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;default_value&gt;medium&lt;/default_value&gt;
+    &lt;layout&gt;normal&lt;/layout&gt;
+    &lt;visibility&gt;1&lt;/visibility&gt;
+    &lt;do_not_select_first&gt;false&lt;/do_not_select_first&gt;
+    &lt;include_none&gt;false&lt;/include_none&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;item_option_new_29cf0f776cba70dd9c1186e4f484b756&lt;/sys_update_name&gt;
+  &lt;/item_option_new&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_8bd363152edd69dde943bb37862fd705</name>
+    <target_name>Apple Vision Pro :: band_size = small</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>6fc2c061192259b9dc927648b3bfc6298e81da9e917d378ffe469cb8fc768a57</payload_hash>
+    <remote_update_set>806f7825ec5a545869bd91a26711de9e</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;8bd363152edd69dde943bb37862fd705&lt;/sys_id&gt;
+    &lt;question&gt;29cf0f776cba70dd9c1186e4f484b756&lt;/question&gt;
+    &lt;text&gt;Small&lt;/text&gt;
+    &lt;value&gt;small&lt;/value&gt;
+    &lt;order&gt;100&lt;/order&gt;
+    &lt;misc&gt;0&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;Small&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_8bd363152edd69dde943bb37862fd705&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_e7c0c80e2c80fe1dbd3cf99b61c8be35</name>
+    <target_name>Apple Vision Pro :: band_size = medium</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>0c0204f2a1ffe1230fcdd4b1c1d3f0c93632f745600a707dab35b9ce5814c278</payload_hash>
+    <remote_update_set>806f7825ec5a545869bd91a26711de9e</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;e7c0c80e2c80fe1dbd3cf99b61c8be35&lt;/sys_id&gt;
+    &lt;question&gt;29cf0f776cba70dd9c1186e4f484b756&lt;/question&gt;
+    &lt;text&gt;Medium&lt;/text&gt;
+    &lt;value&gt;medium&lt;/value&gt;
+    &lt;order&gt;200&lt;/order&gt;
+    &lt;misc&gt;0&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;Medium&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_e7c0c80e2c80fe1dbd3cf99b61c8be35&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_70c3d9842c978557a8df47105ef6fe03</name>
+    <target_name>Apple Vision Pro :: band_size = large</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>e9a6ba46de1fc65d86101c1423825ce543693215724563e9261ccfec6f278e09</payload_hash>
+    <remote_update_set>806f7825ec5a545869bd91a26711de9e</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;70c3d9842c978557a8df47105ef6fe03&lt;/sys_id&gt;
+    &lt;question&gt;29cf0f776cba70dd9c1186e4f484b756&lt;/question&gt;
+    &lt;text&gt;Large&lt;/text&gt;
+    &lt;value&gt;large&lt;/value&gt;
+    &lt;order&gt;300&lt;/order&gt;
+    &lt;misc&gt;0&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;Large&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_70c3d9842c978557a8df47105ef6fe03&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>item_option_new_699ab9dfb06e556816b186aec24142dc</name>
+    <target_name>Apple Vision Pro :: storage</target_name>
+    <type>Variable</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>cb84d1d167be7c56eee19ddf2ee8e04f9ebebb4f6c743d1992ff9964836479ef</payload_hash>
+    <remote_update_set>806f7825ec5a545869bd91a26711de9e</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;item_option_new&quot;&gt;
+  &lt;item_option_new action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;699ab9dfb06e556816b186aec24142dc&lt;/sys_id&gt;
+    &lt;cat_item&gt;deae0ebb09c38bb7a0a2681794779fc6&lt;/cat_item&gt;
+    &lt;name&gt;storage&lt;/name&gt;
+    &lt;sys_name&gt;Choose the storage&lt;/sys_name&gt;
+    &lt;question_text&gt;Choose the storage&lt;/question_text&gt;
+    &lt;type&gt;3&lt;/type&gt;
+    &lt;order&gt;20&lt;/order&gt;
+    &lt;mandatory&gt;true&lt;/mandatory&gt;
+    &lt;active&gt;true&lt;/active&gt;
+    &lt;read_only&gt;false&lt;/read_only&gt;
+    &lt;default_value&gt;256&lt;/default_value&gt;
+    &lt;layout&gt;normal&lt;/layout&gt;
+    &lt;visibility&gt;1&lt;/visibility&gt;
+    &lt;do_not_select_first&gt;true&lt;/do_not_select_first&gt;
+    &lt;include_none&gt;false&lt;/include_none&gt;
+    &lt;visible_bundle&gt;true&lt;/visible_bundle&gt;
+    &lt;visible_guide&gt;true&lt;/visible_guide&gt;
+    &lt;visible_standalone&gt;true&lt;/visible_standalone&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;item_option_new&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;item_option_new_699ab9dfb06e556816b186aec24142dc&lt;/sys_update_name&gt;
+  &lt;/item_option_new&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_f3ea9eeadcef2ddfabd2595528cf465f</name>
+    <target_name>Apple Vision Pro :: storage = 256</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>12e8a7c62ff234eccb46dba652c17c27305710778bb9f9349fd4501f759ccdcc</payload_hash>
+    <remote_update_set>806f7825ec5a545869bd91a26711de9e</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;f3ea9eeadcef2ddfabd2595528cf465f&lt;/sys_id&gt;
+    &lt;question&gt;699ab9dfb06e556816b186aec24142dc&lt;/question&gt;
+    &lt;text&gt;256 GB&lt;/text&gt;
+    &lt;value&gt;256&lt;/value&gt;
+    &lt;order&gt;100&lt;/order&gt;
+    &lt;misc&gt;0&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;256 GB&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_f3ea9eeadcef2ddfabd2595528cf465f&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_d9a6587053f6beb42d8cdfd733529455</name>
+    <target_name>Apple Vision Pro :: storage = 512</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>c37cf4b324b749110bbc5a5f9ab7b7481035b4767e88f4563f7c75e33dcdd057</payload_hash>
+    <remote_update_set>806f7825ec5a545869bd91a26711de9e</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;d9a6587053f6beb42d8cdfd733529455&lt;/sys_id&gt;
+    &lt;question&gt;699ab9dfb06e556816b186aec24142dc&lt;/question&gt;
+    &lt;text&gt;512 GB&lt;/text&gt;
+    &lt;value&gt;512&lt;/value&gt;
+    &lt;order&gt;200&lt;/order&gt;
+    &lt;misc&gt;200&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;512 GB&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_d9a6587053f6beb42d8cdfd733529455&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+  <sys_update_xml action="INSERT_OR_UPDATE">
+    <action>INSERT_OR_UPDATE</action>
+    <name>question_choice_fce33c6741475b21beb520c2430607f6</name>
+    <target_name>Apple Vision Pro :: storage = 1024</target_name>
+    <type>Question Choice</type>
+    <category>customer</category>
+    <update_domain>global</update_domain>
+    <replace_on_upgrade>false</replace_on_upgrade>
+    <payload_hash>74c34519d42e4e510fe3e60b6da058f979339abe862b64b94bfc5063af88a442</payload_hash>
+    <remote_update_set>806f7825ec5a545869bd91a26711de9e</remote_update_set>
+    <payload>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;record_update table=&quot;question_choice&quot;&gt;
+  &lt;question_choice action=&quot;INSERT_OR_UPDATE&quot;&gt;
+    &lt;sys_id&gt;fce33c6741475b21beb520c2430607f6&lt;/sys_id&gt;
+    &lt;question&gt;699ab9dfb06e556816b186aec24142dc&lt;/question&gt;
+    &lt;text&gt;1 TB&lt;/text&gt;
+    &lt;value&gt;1024&lt;/value&gt;
+    &lt;order&gt;300&lt;/order&gt;
+    &lt;misc&gt;400&lt;/misc&gt;
+    &lt;inactive&gt;false&lt;/inactive&gt;
+    &lt;sys_name&gt;1 TB&lt;/sys_name&gt;
+    &lt;sys_scope&gt;global&lt;/sys_scope&gt;
+    &lt;sys_class_name&gt;question_choice&lt;/sys_class_name&gt;
+    &lt;sys_update_name&gt;question_choice_fce33c6741475b21beb520c2430607f6&lt;/sys_update_name&gt;
+  &lt;/question_choice&gt;
+&lt;/record_update&gt;</payload>
+  </sys_update_xml>
+</unload>
