@@ -1,0 +1,103 @@
+# Major Incident Grouping v2 — thin BR wrappers over a Script Include.
+#
+# Global-scope change (Script Include + two Business Rules on the OOTB incident
+# table) shipped as an update-set-as-artifact (ADR-0001). Rebuild of the v1
+# inline before-insert BR per ADR-0012 (structure) + ADR-0013 (MI specifics).
+#
+# Generate (from the servicenow-coder repo root):
+#   node scripts/build-update-set.js ../servicenow-coder-global/changes/2026-06-mi-grouping-v2/
+
+name: Major Incident Grouping v2 — propose + parent duplicates
+description: |
+    Groups incidents that share an exact short_description within a 10-minute
+    window under a single Major Incident lead. A thin before/insert Business
+    Rule attaches new incidents to an existing lead (O(1)); a thin async
+    Business Rule forms the cluster by proposing the earliest sibling as a Major
+    Incident Candidate and parenting the rest. Core logic lives in the
+    MajorIncidentGrouper Script Include.
+application: global
+target_release: 2026-Q2
+
+intent: |
+    Cut major-incident triage noise without bypassing the MIM process. When an
+    outage spawns a burst of look-alike incidents, the rule auto-detects them,
+    proposes the earliest as a Major Incident Candidate via the supported MIM
+    API (sn_major_inc_mgmt.MajorIncidentTriggerRules.proposeMIC), and parents
+    the rest under it (addAsChildToMajorIncident) — so the cluster is visible in
+    the MIM Workbench for a major incident manager to ACCEPT. We deliberately do
+    NOT auto-accept: promotion to an accepted major incident requires the
+    major_incident_manager role and a human's judgement (ADR-0013). A lone
+    incident never becomes a candidate.
+
+artifacts:
+    - type: script_include
+      name: MajorIncidentGrouper
+      access: public
+      active: true
+      client_callable: false
+      description: |
+          Core duplicate-grouping logic. Decide methods (groupKey, findLead,
+          findUngroupedSiblings) are read-only; act methods (proposeLead,
+          attachChild) go through the supported MIM API. Entry points:
+          attachOnInsert (sync, O(1)) and formGroup (async).
+      script_file: grouper.js
+
+    - type: business_rule
+      name: MI Group - attach to existing lead
+      table: incident
+      description: |
+          before/insert. Links a new incident to an existing Major Incident lead
+          (proposed candidate or accepted MI) sharing its short_description in
+          the window. Single O(1) lookup; fail-open.
+      when: before
+      order: 100
+      active: true
+      advanced: true
+      action_insert: true
+      action_update: false
+      action_query: false
+      action_delete: false
+      condition: '!current.short_description.nil()'
+      script_file: group-attach-br.js
+
+    - type: business_rule
+      name: MI Group - form cluster
+      table: incident
+      description: |
+          async/insert. When a duplicate cluster has formed and no lead exists,
+          proposes the earliest sibling as a Major Incident Candidate and
+          parents the rest. Runs off the insert transaction; fail-open.
+      when: async
+      order: 100
+      active: true
+      advanced: true
+      action_insert: true
+      action_update: false
+      action_query: false
+      action_delete: false
+      condition: '!current.short_description.nil()'
+      script_file: group-form-br.js
+
+estimated_impact:
+    tables_modified:
+        - incident
+        - sys_script_include
+        - sys_script
+    bulk_data_changes: false
+    rollback_complexity: low
+    notes: |
+        - Prerequisite: com.snc.incident.mim active (supplies
+          major_incident_state + the MajorIncidentTriggerRules API). Confirmed
+          active on dev392282 2026-06-29.
+        - Adds one sys_script_include + two sys_script rows. No schema change;
+          parent_incident and major_incident_state already exist OOTB / via MIM.
+        - Runtime writes: on a duplicate burst, sets parent_incident on children
+          and proposes (NOT accepts) the earliest as a Major Incident Candidate.
+          No incident is auto-accepted as a major incident — a major incident
+          manager accepts in the Workbench. No backfill of historical data.
+        - SUPERSEDES the v1 inline BR (changes/2026-06-major-incident-grouping/,
+          live sys_id de85a0bd9e5ea24a1d11344177c418d4). DEACTIVATE the v1 BR
+          before/when committing this set, or the two will both fire on insert.
+        - Rollback: deactivate or delete the two business rules (the Script
+          Include is inert without a caller). Already-grouped incidents keep
+          their parent_incident; no data is corrupted by removing the rules.
